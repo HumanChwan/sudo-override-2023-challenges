@@ -3,7 +3,7 @@ FROM rastasheep/ubuntu-sshd
 # Create new user
 RUN adduser --disabled-password --gecos '' user
 # Add some random password
-RUN echo "user:know_your_man" | chpasswd
+RUN echo "user:qu1t3_4_p4ssW0r6_4iNt_1t" | chpasswd
 RUN passwd -n 9999 user
 
 # Setup ssh and man

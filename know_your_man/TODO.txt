@@ -1,3 +1,2 @@
 1. Port number!!
-2. Password, should be a challenge as well :thinking:
-    - RSA (but crypto sus)
+2. Password, should be a challenge as well :thinking: - kinda done
