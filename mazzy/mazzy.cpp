@@ -126,13 +126,14 @@ int main() {
     populate_flag(flag);
 
     std::cout << "\t\tWelcome to the Maze buster!!\n"
-                 "GRID-COMPONENTS: # - Wall, * - You, $ - Moni >_<\n"
+                 "GRID-COMPONENTS: # - Wall, * - You, $ - Gold >_<\n"
                  "GOAL: You wish to reach the Gold, but can't pass through the Walls\n"
-                 "MOVEMENTS: w - up, d - down, d - right, a - left\n\n";
+                 "CONTROL: w - up, a - left, s - down, d - right\n\n";
 
     int test_cases = TEST_CASES;
     while (test_cases--) {
         pose_maze_to_solve(15 + (TEST_CASES - test_cases - 1), 10);
+        std::cout << "\nSolved: " << TEST_CASES - test_cases << "\n\n";
     }
 
     std::cout << "\n\nCongratulations! You have busted the Maze in and out!\nHere is your flag: " << flag << 
