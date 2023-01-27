@@ -7,10 +7,7 @@ function exit_code () {
     fi
 }
 
-docker stop mazzy
-exit_code "stopping"
-
-docker rm `docker ps -a | grep 'mazzy' | head -n 1 | cut -d ' ' -f1`
+docker stop `docker ps -a | grep 'mazzy' | head -n 1 | rev | cut -d ' ' -f1 | rev`
 exit_code "removing ps"
 
 docker rmi -f mazzy

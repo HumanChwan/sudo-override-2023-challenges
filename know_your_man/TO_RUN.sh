@@ -7,10 +7,7 @@ function exit_code () {
     fi
 }
 
-docker stop know_your_man
-exit_code "stopping"
-
-docker rm `docker ps -a | grep 'know_your_man' | head -n 1 | cut -d ' ' -f1`
+docker stop `docker ps -a | grep 'know_your_man' | head -n 1 | rev | cut -d ' ' -f1 | rev`
 exit_code "removing ps"
 
 docker rmi -f know_your_man
