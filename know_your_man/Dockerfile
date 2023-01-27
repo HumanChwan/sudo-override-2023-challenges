@@ -22,3 +22,6 @@ RUN echo "sudo{c4n_y0u_d0_th4t_In_3m4cs_hUh}" > /flag.txt
 # edit the bashrc
 RUN echo "man cat; exit" > /home/user/.bashrc
 RUN chown root:root /home/user/.bashrc
+
+# remove the ability to change default shell
+RUN rm /usr/bin/chsh
