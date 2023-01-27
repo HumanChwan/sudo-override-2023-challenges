@@ -16,6 +16,6 @@ exit_code "removing image"
 docker build -t mazzy .
 exit_code "build"
 
-# TODO: decide the port (keeping it 4545 for now)
-docker run -d -p 4545:22 mazzy
+# TODO: decide the port (keeping it 6868 for now)
+docker run -d -p 6868:6868 mazzy
 exit_code "run"
