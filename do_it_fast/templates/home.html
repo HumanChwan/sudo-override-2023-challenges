@@ -1,0 +1,25 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+{% if loggedin %}
+<div class="container">
+    <p>Wanna see the flag ?</p>
+    <p>Its super easy </p>
+    <p class="small-text">you are loggedin by the way.</p>
+    <div id="counter" class="with-border">
+        
+    </div>
+</div>
+<script src="static/js/script.js"></script>
+{% else %}
+<div class="container">
+    <p>Wanna see the flag ?</p>
+    <p>Its super easy </p>
+    <p>Login and get the flag </p>
+    <form method="post" action="/login">
+        <button type="submit">Login</button>
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}

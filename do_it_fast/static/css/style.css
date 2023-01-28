@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap');
+
+
+body{
+    background-color: black;
+    display: flex;
+    font-family: 'Black And White Picture', sans-serif;
+    font-size: 2rem;
+    color: white;
+    flex-direction: column;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container button{
+    background-color: black;
+    color: #ffffff;
+    border: 2px solid white;
+    padding: 1rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    font-family: 'Black And White Picture', sans-serif;
+}
+
+#counter {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.with-border{
+    border :  2px solid white;
+    border-radius: 50%;
+}
