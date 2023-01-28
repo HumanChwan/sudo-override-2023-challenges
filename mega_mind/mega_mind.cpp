@@ -121,9 +121,6 @@ void run_test_case() {
         exit(1);
     }
 
-    std::cout << "guess: " << res << "\n";
-    std::cout << "act: " << expr.result << "\n";
-
     if (res != expr.result) {
         std::cout << "That doesn't seem like the correct result!\n\n";
         exit_help();

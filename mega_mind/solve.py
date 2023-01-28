@@ -1,7 +1,7 @@
 from pwn import *
 
 def main():
-    conn = remote('localhost', 3141)
+    conn = remote('139.59.82.253', 3141)
     print(conn.recvline())
     print(conn.recvline())
 
