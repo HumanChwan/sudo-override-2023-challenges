@@ -22,7 +22,7 @@ def menu() -> int:
         exit(1)
 
 def print_intercepted_message():
-    e = 3 + 2 * random.randint(0, 10);
+    e = 3 + random.randint(0, 5);
     p = getPrime(512)
     q = getPrime(512)
     n = p * q
