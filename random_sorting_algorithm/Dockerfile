@@ -15,4 +15,4 @@ RUN pip3 install pycryptodome
 COPY rsa.py rsa.py
 
 EXPOSE 6553
-CMD ["tcpserver", "0.0.0.0", "6553", "./rsa.py"]
+CMD ["tcpserver", "0.0.0.0", "6553", "python", "./rsa.py"]
