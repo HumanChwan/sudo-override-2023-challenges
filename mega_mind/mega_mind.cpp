@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <string>
 #include <chrono>
+#include <queue>
 
 #define MONKE 0
 
@@ -66,15 +67,18 @@ int64_t form_expression(Node* root, std::string& expression) {
         return root->num;
     }
 
+    bool bracket = root->oper == '*' && !root->LEFT->leaf;
+    if (bracket) expression += '(';
     int64_t lval = form_expression(root->LEFT, expression);
+    if (bracket) expression += ')';
 
     // middle part
     expression += " ";
     expression += root->oper;
     expression += " ";
-    bool bracket = root->oper == '*' && !root->RIGHT->leaf;
-    if (bracket) expression += '(';
 
+    bracket = (root->oper == '*' || root->oper == '-') && !root->RIGHT->leaf;
+    if (bracket) expression += '(';
     int64_t rval = form_expression(root->RIGHT, expression);
     if (bracket) expression += ')';
 
@@ -90,7 +94,7 @@ struct MathExpression {
 
 MathExpression generate_math_expression() {
     Node* root = create_subtree(0);
-    
+
     MathExpression expr;
     expr.result = form_expression(root, expr.expression);
 
@@ -116,6 +120,9 @@ void run_test_case() {
         exit_help();
         exit(1);
     }
+
+    std::cout << "guess: " << res << "\n";
+    std::cout << "act: " << expr.result << "\n";
 
     if (res != expr.result) {
         std::cout << "That doesn't seem like the correct result!\n\n";
@@ -150,17 +157,17 @@ int main() {
     int rounds = 60 + rand() % 40;
     for (int i = 0; i < rounds; ++i) run_test_case();
 
-    int single_fuck_rounds = 25 + rand() % 10;
-    for (int i = 0; i < single_fuck_rounds; ++i) {
-        if (rand() % 10 < 3) fuck_simple(), i--;
-        else run_test_case();
-    }
-
     int annoy_max_fuck_rounds = 10 + rand() % 10;
     for (int i = 0; i < annoy_max_fuck_rounds; ++i) {
         int random = rand() % 10;
         if (random < 2) annoy_max_fuck(), i--;
         else if (random < 3) fuck_simple(), i--;
+        else run_test_case();
+    }
+
+    int single_fuck_rounds = 25 + rand() % 10;
+    for (int i = 0; i < single_fuck_rounds; ++i) {
+        if (rand() % 10 < 3) fuck_simple(), i--;
         else run_test_case();
     }
 
