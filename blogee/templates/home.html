@@ -1,0 +1,42 @@
+{% extends "layout/base.html" %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="container">
+            <h2>Hi {{ user.username }}, welcome to Blogee 🤪</h2>
+            <div class="forms">
+                <form action="{% url 'create_blog' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="title" placeholder="title">
+                    <textarea name="content" id="" cols="30" rows="10" placeholder="content"></textarea>
+                    <button type="submit">Create</button>
+                </form>
+            </div>
+            <a href="{% url 'view_blog' %}">My Blogs</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+    {% else %}
+        <div class="container">
+            <p>welcome to Blogee 🤪</p>
+            <h2>Register first to post blog</h2>
+            <div class="forms">
+                
+                <form action="{% url 'register' %}" method="post">
+                    <p>Register</p>
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="username">
+                    <input type="email" name="email" placeholder="email">
+                    <input type="password" name="password" placeholder="password">
+                    <button type="submit">Register</button>
+                </form>
+                <form action="{% url 'login' %}" method="post">
+                    <p>Login</p>
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="username">
+                    <input type="password" name="password" placeholder="password">
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+            
+        </div>
+    {% endif %}
+{% endblock %}

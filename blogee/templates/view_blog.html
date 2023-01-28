@@ -1,0 +1,17 @@
+{% extends "layout/base.html" %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="container">
+        <h3>My Blogs</h3>
+        {% for blog in blogs %}
+            <div class="mini-container">
+                <p class="item_id">[{{ blog.id }}]</p>
+                <a href="/blog/{{blog.id}}">{{ blog.title }}</a>
+                
+            </div>
+        {% endfor %}
+        </div>
+    {% else %}
+    <h1>Not Autherized</h1>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "layout/base.html" %}
+    {% block content %}
+    
+    {{ request.__class__.__mro__[2].__subclasses__() }}
+    
+    {% endblock %}
